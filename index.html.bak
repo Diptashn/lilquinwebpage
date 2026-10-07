@@ -16,7 +16,8 @@ body{font-family:'Jost',system-ui,sans-serif;background:var(--cream);color:var(-
 h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-.02em}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
-
+.topbar{background:var(--ink);color:#F5EBDC;text-align:center;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px}
+.topbar b{color:#E9BE8A;font-weight:600}
 header{position:sticky;top:0;z-index:20;background:rgba(250,245,237,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:24px;letter-spacing:-.02em}
@@ -126,7 +127,7 @@ footer .cols{grid-template-columns:1fr 1fr}
 body{overflow-x:hidden}
 img{max-width:100%}
 .wrap{padding:0 18px}
-
+.topbar{font-size:11px;padding:8px 10px;line-height:1.5}
 .nav{height:64px}
 .logo{font-size:19px;gap:8px}
 .logo img{width:36px;height:36px}
@@ -158,7 +159,7 @@ footer .cols{grid-template-columns:1fr;gap:20px}
 <body>
 <header><div class="wrap nav">
 <div class="logo"><img src="assets/images/logo.png" alt="LilQuin Kitchen logo"><a href="index.html" class="logo-text" style="color:inherit;text-decoration:none">LilQuin Kitchen <small>Cake Atelier</small></a></div>
-<nav class="links"><a href="lilquin-wedding.html">Wedding</a><a href="lilquin-birthday.html">Birthday</a><a href="lilquin-bespoke.html">Bespoke</a><a href="#gallery">Gallery</a><a href="lilquin-our-story.html">Our Story</a></nav>
+<nav class="links"><a href="#wedding">Wedding</a><a href="#birthday">Birthday</a><a href="#bespoke">Bespoke</a><a href="#gallery">Gallery</a><a href="#tasting">Tastings</a></nav>
 <a class="btn" href="#tasting">Order a cake →</a>
 </div></header>
 
@@ -184,9 +185,9 @@ footer .cols{grid-template-columns:1fr;gap:20px}
 <div class="section" id="wedding">
 <div class="split"><div><div class="kicker">What we bake</div><h2>Three collections, <em>one obsession:</em> flavour first.</h2></div><p>Every cake is sketched, tasted and baked to order. No fondant shortcuts, no frozen tiers, no catalogue sameness.</p></div>
 <div class="grid3">
-<div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=800&auto=format&fit=crop"></div><div class="bd"><div class="tag">01 — Wedding</div><h3>Heirloom Wedding</h3><p>Sketch consult, florals, delivery + on-site assembly. 2–5 tiers.</p><div class="price-row"><span class="price">from £420</span><a class="link" href="lilquin-wedding.html">Enquire →</a></div></div></div>
-<div class="card" id="birthday"><div class="ph"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?q=80&w=800&auto=format&fit=crop"></div><div class="bd"><div class="tag">02 — Birthday</div><h3>Celebration</h3><p>48-hour icons: confetti sponge, burner phone toppers, hand-piped messages.</p><div class="price-row"><span class="price">from £58</span><a class="link" href="lilquin-birthday.html">Order →</a></div></div></div>
-<div class="card" id="bespoke"><div class="ph"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=800&auto=format&fit=crop"></div><div class="bd"><div class="tag">03 — Bespoke</div><h3>Sculpted & Brand</h3><p>Launches, christenings, press days. Colour-matched, logo-stencilled, structural.</p><div class="price-row"><span class="price">from £180</span><a class="link" href="lilquin-bespoke.html">Brief us →</a></div></div></div>
+<div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=800&auto=format&fit=crop"></div><div class="bd"><div class="tag">01 — Wedding</div><h3>Heirloom Wedding</h3><p>Sketch consult, tasting box, florals, delivery + on-site assembly. 2–5 tiers.</p><div class="price-row"><span class="price">from £420</span><a class="link" href="#tasting">Enquire →</a></div></div></div>
+<div class="card" id="birthday"><div class="ph"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?q=80&w=800&auto=format&fit=crop"></div><div class="bd"><div class="tag">02 — Birthday</div><h3>Celebration</h3><p>48-hour icons: confetti sponge, burner phone toppers, hand-piped messages.</p><div class="price-row"><span class="price">from £58</span><a class="link" href="#tasting">Order →</a></div></div></div>
+<div class="card" id="bespoke"><div class="ph"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=800&auto=format&fit=crop"></div><div class="bd"><div class="tag">03 — Bespoke</div><h3>Sculpted & Brand</h3><p>Launches, christenings, press days. Colour-matched, logo-stencilled, structural.</p><div class="price-row"><span class="price">from £180</span><a class="link" href="#tasting">Brief us →</a></div></div></div>
 </div>
 </div>
 
@@ -263,7 +264,7 @@ footer .cols{grid-template-columns:1fr;gap:20px}
 
 <footer><div class="wrap cols">
 <div><div class="logo" style="color:#FFF6E6">LilQuin Kitchen</div><p style="font-size:14px;margin-top:10px;max-width:32ch">Artisanal cake atelier for weddings, birthdays and glorious excuses.</p></div>
-<div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">Shop</div><div style="display:grid;gap:8px;font-size:14px"><a href="lilquin-wedding.html">Wedding</a><a href="lilquin-birthday.html">Birthday</a><a href="lilquin-bespoke.html">Bespoke</a></div></div>
+<div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">Shop</div><div style="display:grid;gap:8px;font-size:14px"><a href="lilquin-wedding.html">Wedding</a><a href="#">Birthday</a><a href="#">Bespoke</a><a href="#">Tasting boxes</a></div></div>
 <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">Studio</div><div style="display:grid;gap:8px;font-size:14px"><a href="lilquin-our-story.html">Our story</a><a href="#">Journal</a><a href="#">Sustainability</a><a href="#">Careers</a></div></div>
 <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">Follow</div><div style="display:grid;gap:8px;font-size:14px"><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">TikTok</a></div></div>
 </div><div class="wrap" style="border-top:1px solid #3A2B1E;margin-top:32px;padding-top:18px;display:flex;justify-content:space-between;font-size:12.5px;color:#9A8468"><span>© 2026 LilQuin Kitchen</span><span>Allergens & FAQs · Privacy</span></div></footer>
