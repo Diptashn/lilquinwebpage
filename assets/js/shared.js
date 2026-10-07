@@ -1,11 +1,16 @@
 /**
  * LilQuin Kitchen — Shared JavaScript (all pages)
  * Hamburger menu toggle
+ * Guarded against double-execution (duplicate <script> tags must not
+ * double-bind the toggle, which would open+close on a single tap).
  */
 (function(){
+  if (window.__lilquinSharedInit) return;
+  window.__lilquinSharedInit = true;
   var h=document.querySelector('.hamburger'),hdr=document.querySelector('header');
   if(!h||!hdr)return;
-  h.addEventListener('click',function(){
+  h.addEventListener('click',function(e){
+    e.stopPropagation();
     var o=hdr.classList.toggle('nav-open');
     h.setAttribute('aria-expanded',o?'true':'false');
   });
