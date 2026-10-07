@@ -70,6 +70,37 @@
 .form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px}
 .form input,.form select{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 14px;font-size:15px;margin-top:8px;font-family:inherit}
 .form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ---- Index responsive: tablet (≤980px) ---- */
+@media(max-width:980px){
+  .section{padding:56px 0 8px}
+  .grid3{grid-template-columns:1fr 1fr}
+  .grid3 .card:first-child{grid-column:1/-1}
+  .cake-prev{flex-wrap:wrap}
+  .quote{grid-template-columns:1fr;gap:24px}
+  .quote img{max-height:320px}
+  .tasting{gap:20px}
+}
+
+/* ---- Index responsive: phone (≤600px) ---- */
+@media(max-width:600px){
+  .section{padding:44px 0 6px}
+  .section h2{font-size:30px}
+  .grid3{grid-template-columns:1fr}
+  .card .bd{padding:18px}
+  .card h3{font-size:24px}
+  .panel{padding:26px 20px}
+  .panel h3{font-size:28px}
+  .press{flex-direction:column;align-items:flex-start;gap:8px}
+  .form{padding:24px 18px}
+  .form .row{grid-template-columns:1fr}
+  .quote{margin:44px 0 8px}
+  .tasting{margin:16px 0 48px}
+  .cake-prev{padding:18px 14px;gap:12px}
+  .total strong{font-size:28px}
+  .step{gap:12px}
+  .step b{min-width:32px;font-size:18px}
+}
 </style>
 </head>
 <body>
@@ -183,22 +214,8 @@
 <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">Shop</div><div style="display:grid;gap:8px;font-size:14px"><a href="lilquin-wedding.html">Wedding</a><a href="lilquin-birthday.html">Birthday</a><a href="lilquin-bespoke.html">Bespoke</a></div></div>
 <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">Studio</div><div style="display:grid;gap:8px;font-size:14px"><a href="lilquin-our-story.html">Our story</a><a href="#">Journal</a><a href="#">Sustainability</a><a href="#">Careers</a></div></div>
 <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">Follow</div><div style="display:grid;gap:8px;font-size:14px"><a href="https://instagram.com/lilquin_kitchen" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com/@lilquin_kitchen" target="_blank" rel="noopener">TikTok</a></div></div>
-</div><div class="wrap" style="border-top:1px solid #3A2B1E;margin-top:32px;padding-top:18px;display:flex;justify-content:space-between;font-size:12.5px;color:#9A8468"><span>© 2026 LilQuin Kitchen</span><span>Allergens & FAQs · Privacy</span></div></footer>
+</div><div class="wrap footbar"><span>© 2026 LilQuin Kitchen</span><span>Allergens & FAQs · Privacy</span></div></footer>
 
-<script src="assets/js/shared.js"></script>
-<script>
-let base={size:58,flav:0,fin:0};
-function bind(id,key){
-document.querySelectorAll('#'+id+' .pill').forEach(b=>b.onclick=()=>{
-document.querySelectorAll('#'+id+' .pill').forEach(x=>x.classList.remove('active'));
-b.classList.add('active');base[key]=+b.dataset.p;
-if(key==='size'){document.getElementById('sum').textContent=b.textContent+' · '+document.querySelector('#flav .active').textContent;}
-if(key==='flav'){document.getElementById('sum').textContent=document.querySelector('#size .active').textContent+' · '+b.textContent;}
-if(key==='fin'){document.getElementById('flavName').textContent=b.textContent;}
-document.getElementById('price').textContent='£'+(base.size+base.flav+base.fin);
-});}
-bind('size','size');bind('flav','flav');bind('fin','fin');
-</script>
 <script src="assets/js/shared.js"></script>
 <script>
 let base={size:58,flav:0,fin:0};

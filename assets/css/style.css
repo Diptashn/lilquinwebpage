@@ -22,8 +22,8 @@ a{color:inherit;text-decoration:none}
 
 /* ---- Header / Nav ---- */
 header{position:sticky;top:0;z-index:20;background:rgba(250,245,237,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:24px;letter-spacing:-.02em}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:12px;min-width:0}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:24px;letter-spacing:-.02em;min-width:0;flex-shrink:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
 .logo-text{display:flex;flex-direction:column;line-height:1}
 .logo span{font-style:italic;font-weight:300}
@@ -47,8 +47,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(250,245,237,.88);backdro
 .divider{border:0;border-top:1px solid var(--line);margin:40px 0}
 
 /* ---- Hero (index) ---- */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;padding:64px 0 36px;align-items:center}
-.hero h1{font-size:clamp(44px,5.2vw,76px);margin:22px 0 18px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;padding:64px 0 36px;align-items:center;min-width:0}
+.hero h1{font-size:clamp(44px,5.2vw,76px);margin:22px 0 18px;word-break:break-word;overflow-wrap:anywhere}
 .hero h1 i{font-style:italic;font-weight:300;color:var(--accent-dark)}
 .lede{font-size:18px;color:#5B4D40;max-width:48ch;font-weight:300}
 .cta-row{display:flex;gap:14px;margin:28px 0 30px;flex-wrap:wrap}
@@ -57,8 +57,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(250,245,237,.88);backdro
 .meta div span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
 /* Hero visual */
-.visual{position:relative}
-.arch{border-radius:999px 999px 24px 24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(80,50,20,.18);aspect-ratio:.83;background:#ddd}
+.visual{position:relative;min-width:0;overflow:clip}
+.arch{border-radius:999px 999px 24px 24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(80,50,20,.18);aspect-ratio:.83;background:#ddd;min-width:0}
 .arch img{width:100%;height:100%;object-fit:cover;display:block}
 .float{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 16px 40px rgba(60,35,10,.14);display:flex;gap:12px;align-items:center}
 .float.taste{left:-36px;bottom:72px;max-width:250px}
@@ -69,14 +69,14 @@ header{position:sticky;top:0;z-index:20;background:rgba(250,245,237,.88);backdro
 .stamp{position:absolute;left:-30px;top:36px;width:108px;height:108px;border-radius:50%;background:var(--ink);color:#F3E6CF;display:grid;place-items:center;text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:1.4;transform:rotate(-12deg)}
 
 /* ---- Page Hero (wedding/birthday/bespoke) ---- */
-.page-hero{padding-top:72px;padding-bottom:16px}
-.page-hero h1{font-size:clamp(44px,5vw,68px);margin:18px 0 10px}
+.page-hero{padding-top:72px;padding-bottom:16px;min-width:0}
+.page-hero h1{font-size:clamp(44px,5vw,68px);margin:18px 0 10px;word-break:break-word;overflow-wrap:anywhere}
 .page-hero h1 i{font-style:italic;font-weight:300;color:var(--accent-dark)}
 .page-hero p.lead{font-size:18px;color:#5B4D40;font-weight:300;max-width:58ch;margin-bottom:24px}
 .cta-wrap{display:flex;gap:14px;margin-bottom:32px;flex-wrap:wrap}
 
 /* ---- Cards ---- */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.3s}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.3s;min-width:0}
 .card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(90,55,20,.14)}
 
 /* ---- Prose / Content ---- */
@@ -94,6 +94,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(250,245,237,.88);backdro
 /* ---- Footer ---- */
 footer{background:var(--ink);color:#D8C5A8;padding:48px 0;border-radius:28px 28px 0 0;margin-top:20px}
 footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+.footbar{border-top:1px solid #3A2B1E;margin-top:32px;padding-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;color:#9A8468}
 
 /* ---- Mobile Hamburger ---- */
 .hamburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);cursor:pointer;flex-shrink:0}
@@ -103,6 +104,10 @@ footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
 .nav-open .hamburger span{background:transparent}
 .nav-open .hamburger span:before{transform:rotate(45deg);top:0}
 .nav-open .hamburger span:after{transform:rotate(-45deg);top:0}
+
+/* ---- Base overflow guard ---- */
+html,body{overflow-x:clip}
+img{max-width:100%;height:auto}
 
 /* ---- Media Queries ---- */
 @media(max-width:980px){
@@ -115,17 +120,35 @@ footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
   header.nav-open .links{display:flex}
   header .links a{padding:12px 4px;font-size:15px;border-bottom:1px solid #EDE3D3}
   header .links a:last-child{border-bottom:0}
+  /* shared grids collapse */
+  .grid3{grid-template-columns:1fr 1fr}
+  .page-hero h1{font-size:clamp(36px,6vw,54px)}
+  .prose h2{font-size:28px}
 }
 
 @media(max-width:600px){
-  body{overflow-x:hidden}
-  img{max-width:100%}
   .wrap,.wrap-wide,.wrap-narrow{padding:0 18px}
-  .nav{height:64px}
-  .logo{font-size:19px;gap:8px}
-  .logo img{width:36px;height:36px}
-  .nav .btn{padding:10px 16px;font-size:11px;white-space:nowrap}
+  /* header fits 390px: logo + btn + burger in one row */
+  .nav{height:60px;gap:8px}
+  .logo{font-size:17px;gap:8px;flex-shrink:1;min-width:0}
+  .logo img{width:32px;height:32px}
+  .logo-text small{display:none}
+  .nav .btn{padding:9px 13px;font-size:10.5px;white-space:nowrap;flex-shrink:0}
+  .hamburger{width:40px;height:40px;flex-shrink:0}
+  /* hero */
+  .page-hero{padding:32px 0 12px}
+  .page-hero h1{font-size:36px;margin:16px 0 12px}
+  .page-hero p.lead{font-size:16px}
+  .cta-row,.cta-wrap{gap:10px}
   .cta-row .btn,.cta-wrap .btn,.cta-box .btn{width:100%;justify-content:center}
+  /* content */
+  .prose p,.prose ul{font-size:16px}
+  .prose h2{font-size:24px;margin:28px 0 10px}
+  .box{padding:24px 18px;margin-bottom:40px}
+  /* footer single column */
+  footer .cols{grid-template-columns:1fr;gap:20px}
+  footer{padding:36px 0;border-radius:20px 20px 0 0}
+  .footbar{flex-direction:column;gap:4px}
 }
 
 /* ---- Index-specific responsive (overridden per page) ---- */
