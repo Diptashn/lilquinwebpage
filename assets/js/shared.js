@@ -37,12 +37,28 @@
   }
 
   // --- Google Calendar Booking Modal ---
+  // --- Security Helpers ---
+  function isValidCalendarUrl(str) {
+    if (!str || typeof str !== 'string') return false;
+    try {
+      var u = new URL(str.trim());
+      return u.protocol === 'https:' &&
+        u.hostname === 'calendar.google.com' &&
+        u.pathname.indexOf('/calendar/appointments/schedules/') === 0;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // --- Google Calendar Booking Modal ---
   var modalEl = null;
 
   function createModal() {
     if (modalEl) return modalEl;
 
-    var url = window.LILQUIN_CONFIG.googleCalendarUrl;
+    var rawUrl = window.LILQUIN_CONFIG.googleCalendarUrl;
+    var isLiveUrl = isValidCalendarUrl(rawUrl);
+
     var backdrop = document.createElement('div');
     backdrop.className = 'booking-backdrop';
     backdrop.setAttribute('role', 'dialog');
@@ -50,10 +66,8 @@
     backdrop.setAttribute('aria-hidden', 'true');
 
     var contentHtml = '';
-    if (url && url.trim().length > 0) {
-      contentHtml = '<iframe class="booking-iframe" src="' + url.trim() + '" frameborder="0"></iframe>';
-    } else {
-      // Interactive Atelier Preview & Schedule Selector
+    if (!isLiveUrl) {
+      // Interactive Atelier Preview & Schedule Selector (Safe Fallback)
       contentHtml =
         '<div class="booking-preview-card">' +
         '<div class="booking-preview-badge">Live Calendar Integration Ready</div>' +
@@ -69,11 +83,11 @@
         '<button type="button" class="booking-slot-btn" data-time="04:00 PM">04:00 PM — 05:30 PM</button>' +
         '</div>' +
         '<div id="booking-action-row" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px;">' +
-        '<a class="btn" id="booking-confirm-wa" href="https://wa.me/628977555739?text=Hi%20LilQuin%20Kitchen,%20I%20would%20like%20to%20reserve%20a%20cake%20tasting%20session." target="_blank" rel="noopener">Confirm via WhatsApp →</a>' +
-        '<a class="btn light" href="https://calendar.google.com" target="_blank" rel="noopener">Open Google Calendar</a>' +
+        '<a class="btn" id="booking-confirm-wa" href="https://wa.me/628977555739?text=Hi%20LilQuin%20Kitchen,%20I%20would%20like%20to%20reserve%20a%20cake%20tasting%20session." target="_blank" rel="noopener noreferrer">Confirm via WhatsApp →</a>' +
+        '<a class="btn light" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer">Open Google Calendar</a>' +
         '</div>' +
         '<div style="background:var(--cream2);padding:10px 16px;border-radius:10px;font-size:12px;color:var(--muted);max-width:540px;margin-top:10px;text-align:left;">' +
-        '<strong>💡 Studio Setup:</strong> When you have your official Google Calendar Appointment Schedule link, simply set <code>window.LILQUIN_CONFIG.googleCalendarUrl</code> in <code>assets/js/shared.js</code> to embed the live Google scheduling widget here.' +
+        '<strong>💡 Studio Setup:</strong> When you have your official Google Calendar Appointment Schedule link, set <code>window.LILQUIN_CONFIG.googleCalendarUrl</code> in <code>assets/js/shared.js</code>.' +
         '</div>' +
         '</div>';
     }
@@ -92,10 +106,24 @@
       '<div class="booking-footer">' +
       '<span>Atelier Studio: Komp. Depnaker, Bekasi</span>' +
       '<span style="display:flex;gap:16px;">' +
-      '<a href="https://wa.me/628977555739" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:underline;">Need help? WhatsApp Us</a>' +
+      '<a href="https://wa.me/628977555739" target="_blank" rel="noopener noreferrer" style="color:var(--ink);text-decoration:underline;">Need help? WhatsApp Us</a>' +
       '</span>' +
       '</div>' +
       '</div>';
+
+    // Safely inject the sandboxed Google Calendar iframe via DOM API
+    if (isLiveUrl) {
+      var bodyEl = backdrop.querySelector('.booking-body');
+      var iframe = document.createElement('iframe');
+      iframe.className = 'booking-iframe';
+      iframe.src = rawUrl.trim();
+      iframe.title = 'Google Calendar Appointment Schedule';
+      iframe.setAttribute('loading', 'lazy');
+      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      iframe.setAttribute('frameborder', '0');
+      bodyEl.appendChild(iframe);
+    }
 
     document.body.appendChild(backdrop);
 
