@@ -49,11 +49,11 @@ Unlike generic e-commerce templates, the site embraces an editorial, boutique ae
 
 | Page | File | Description |
 | :--- | :--- | :--- |
-| **Home / Atelier** | [`index.html`](index.html) | Atelier storefront featuring the hero section, collection highlights, live cake price builder, process timeline, masonry gallery, client testimonials, and studio contact. |
-| **Wedding Cakes** | [`lilquin-wedding.html`](lilquin-wedding.html) | Showcase for 2-tier and 3-tier heirloom wedding cakes, consultation workflow, floral styling, flavor pairings, and tasting booking. |
-| **Celebration / Birthday** | [`lilquin-birthday.html`](lilquin-birthday.html) | 48-hour celebration icons, confetti sponges, hand-piped custom messages, and cake photo carousel. |
-| **Bespoke Commissions** | [`lilquin-bespoke.html`](lilquin-bespoke.html) | Sculpted, color-matched, structural cakes for brand launches, press days, and tailored celebrations. |
-| **Our Story** | [`lilquin-our-story.html`](lilquin-our-story.html) | Narrative chronicle of LilQuin Kitchen's journey from a humble Bekasi home kitchen with a hand mixer to an intentional studio. |
+| **Home / Atelier** | [`index.html`](index.html) (`/`) | Atelier storefront featuring the hero section, collection highlights, live cake price builder, process timeline, masonry gallery, client testimonials, and studio contact. |
+| **Wedding Cakes** | [`wedding.html`](wedding.html) (`/wedding`) | Showcase for 2-tier and 3-tier heirloom wedding cakes, consultation workflow, floral styling, flavor pairings, and tasting booking. |
+| **Celebration / Birthday** | [`birthday.html`](birthday.html) (`/birthday`) | 48-hour celebration icons, confetti sponges, hand-piped custom messages, and cake photo carousel. |
+| **Bespoke Commissions** | [`bespoke.html`](bespoke.html) (`/bespoke`) | Sculpted, color-matched, structural cakes for brand launches, press days, and tailored celebrations. |
+| **Our Story** | [`our-story.html`](our-story.html) (`/our-story`) | Narrative chronicle of LilQuin Kitchen's journey from a humble Bekasi home kitchen with a hand mixer to an intentional studio. |
 
 ---
 
@@ -103,11 +103,12 @@ The design evokes an artisanal French/English bakery with warm tones and editori
 ```text
 lilquinwebpage/
 ├── README.md                     # Project documentation & overview
-├── index.html                    # Main landing page & cake builder
-├── lilquin-wedding.html          # Wedding cakes portfolio & tasting info
-├── lilquin-birthday.html         # Birthday & celebration cakes
-├── lilquin-bespoke.html          # Bespoke & sculpted commissions
-├── lilquin-our-story.html        # Atelier backstory & head baker profile
+├── index.html                    # Main landing page & cake builder (/)
+├── wedding.html                  # Wedding cakes portfolio & tasting info (/wedding)
+├── birthday.html                 # Birthday & celebration cakes (/birthday)
+├── bespoke.html                  # Bespoke & sculpted commissions (/bespoke)
+├── our-story.html                # Atelier backstory & head baker profile (/our-story)
+├── vercel.json                   # Edge routing, cleanUrls & security headers
 │
 └── assets/
     ├── css/
